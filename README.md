@@ -4,6 +4,6 @@ Pour lancer le serveur :
 
 Clonez le dépôt localement : git clone https://github.com/vidal77390/NodeJs-Exercice1.git
 
-Installez les dépendances une fois dans le dossier : npm install
+Installez les dépendances une fois dans le dossier : npm install --save
 
 Ensuite lancez le serveur : npm start
