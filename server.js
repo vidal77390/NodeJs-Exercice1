@@ -9,3 +9,16 @@ app.listen(PORT, () => {
 app.get("", (req, res, next) => {
   res.json(["Hello World"]);
 });
+
+/*app.get("/hello?:nom", (req, res, next) => {
+  res.json(["Quel est votre nom ?"]);
+});*/
+
+
+app.get("/hello", (req, res, next) => {
+  if(req.query.nom){
+    res.json(["Bonjour, ", req.query.nom, " !"]);
+  }else{
+    res.json(["Quel est votre nom ?"]);
+  }
+});
