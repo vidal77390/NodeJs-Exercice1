@@ -1,4 +1,4 @@
-Une fois ce serveur NodeJs lancé une requette http sur localhost:3000/ vous retournera Hello World
+Une fois ce serveur NodeJs lancé une requette http sur localhost:3000/ vous retournera "Hello World"
 
 Pour lancer le serveur :
 
