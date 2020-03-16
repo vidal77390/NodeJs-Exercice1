@@ -1,0 +1,23 @@
+{
+  "name": "exercice1",
+  "version": "1.0.0",
+  "description": "exercice1 semaine thématique",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vidal77390/NodeJs-Exercice1.git"
+  },
+  "author": "Vidal Léo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vidal77390/NodeJs-Exercice1/issues"
+  },
+  "homepage": "https://github.com/vidal77390/NodeJs-Exercice1#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
