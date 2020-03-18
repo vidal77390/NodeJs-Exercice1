@@ -3,9 +3,16 @@
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://dbAdmin:dbAdmin1@cluster0-ne7rk.azure.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
+client.connect(async err => {
   const collection = client.db("test").collection("devices");
   // perform actions on the collection object
+  const dates = await collection.find({}).limit(2).toArray();
+  console.log("dates: ", dates);
+
+  let r = await collection.insertOne({date: new Date()});
+  console.log("response : ", r);
+  const datesAfter = await collection.find({}).limit(2).toArray();
+  console.log("dates after insert: ", dates);
   client.close();
 });
 
