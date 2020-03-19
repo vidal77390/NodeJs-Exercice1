@@ -21,31 +21,31 @@ app.get('/hello', function (req, res) {
   }
 })
 
-app.get('/messages/all', function (req, res) {
-  client.connect(async err => {
-    const collection = client.db("chat-bot").collection("messages");
-    const allMessage = await collection.find({}).toArray();
-    console.log("recup all msg : ",allMessage);
-    res.send(allMessage);
-    client.close();
-  });
+app.get('/messages/all', async function (req, res) {
+  await client.connect()
+  const collection = client.db("chat-bot").collection("messages");
+  const allMessage = await collection.find({}).toArray();
+  console.log("recup all msg : ",allMessage);
+  res.send(allMessage);
+  client.close();
 });
 
 app.get('/messages/last', function (req, res) {
-  client.connect(async err => {
+  (async () => {
+    await client.connect();
     const collection = client.db("chat-bot").collection("messages");
     const allMessage = await collection.find({}).toArray();
     console.log("recup dernier msg : ",allMessage[allMessage.length-1]);
     res.send(allMessage[allMessage.length-1]);
     client.close();
-  });
+  })();
 });
 
-app.delete('/messages/last', function (req, res) {
-  console.log("connecting to the db for delete")
-  client.connect(async err => {
+app.delete('/messages/last', async function (req, res) {
+    console.log("connecting to the db for delete")
+    await client.connect();
     console.log("get collection")
-    const collection = client.db("chat-bot").collection("messages");
+    const collection = await client.db("chat-bot").collection("messages");
     console.log("get documents")
     var allMessage = await collection.find({}).toArray();
     console.log("tout les message before delete : ", allMessage);
@@ -58,7 +58,6 @@ app.delete('/messages/last', function (req, res) {
     allMessage = await collection.find({}).toArray();
     console.log("tout les message after delete : ", allMessage);
     client.close();
-  });
 });
 
 app.post('/chat', function (req, res) {
